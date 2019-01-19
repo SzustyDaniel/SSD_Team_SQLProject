@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.168
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28407.52
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwimmerManagmentUI", "SwimmerManagmentUI\SwimmerManagmentUI.csproj", "{DA16EDD6-9E19-4768-8914-E32CB4156DF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{13747B4B-2AE9-4E8A-AEBC-9DD76D0FA5BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{DA16EDD6-9E19-4768-8914-E32CB4156DF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA16EDD6-9E19-4768-8914-E32CB4156DF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA16EDD6-9E19-4768-8914-E32CB4156DF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13747B4B-2AE9-4E8A-AEBC-9DD76D0FA5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13747B4B-2AE9-4E8A-AEBC-9DD76D0FA5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13747B4B-2AE9-4E8A-AEBC-9DD76D0FA5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13747B4B-2AE9-4E8A-AEBC-9DD76D0FA5BC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
