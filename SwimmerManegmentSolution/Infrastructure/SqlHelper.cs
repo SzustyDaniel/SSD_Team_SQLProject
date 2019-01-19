@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public class Class1
+    public class SqlHelper
     {
     }
 }
