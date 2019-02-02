@@ -6,9 +6,9 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwimmerManagmentUI.ViewModel
+namespace SwimmerManagmentUI.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

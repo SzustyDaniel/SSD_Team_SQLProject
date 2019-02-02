@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SwimmerManagmentUI.ViewModel
+namespace SwimmerManagmentUI.ViewModels
 {
-    public class MainWindowViewModel : BaseViewModel
+    public class MainWindowViewModel: BaseViewModel
     {
+
     }
 }
