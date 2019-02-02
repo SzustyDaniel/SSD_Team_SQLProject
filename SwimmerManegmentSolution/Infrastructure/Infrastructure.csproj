@@ -56,6 +56,8 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Queries\David\GetAllCoaches.sql" />
+    <Content Include="Queries\David\GetTeamsForCoach.sql" />
     <Content Include="Queries\David\PotentialsContactAndByGender.sql" />
     <Content Include="Queries\David\SwimmersWithoutTraining.sql" />
   </ItemGroup>
