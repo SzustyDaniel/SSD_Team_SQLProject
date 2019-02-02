@@ -11,15 +11,17 @@ namespace SwimmerManagmentUI.Models
         public int CoachID { get; set; }
         public string CoachName { get; set; }
         public string Address { get; set; }
+        public int Achievement { get; set; }
         public int Salary { get; set; }
         public DateTime StartDateOfWork { get; set; }
         public string TrainingDiploma { get; set; }
 
-        public Coach(int id, string name, string address, int salary, DateTime startdate, string training)
+        public Coach(int id, string name, string address,int achievement, int salary, DateTime startdate, string training)
         {
             CoachID = id;
             CoachName = name;
             Address = address;
+            Achievement = achievement;
             Salary = salary;
             StartDateOfWork = startdate;
             TrainingDiploma = training;
