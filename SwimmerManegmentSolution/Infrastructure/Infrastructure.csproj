@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Coach.cs" />
+    <Compile Include="Models\RegularSwimmer.cs" />
+    <Compile Include="Models\StupidClass.cs" />
+    <Compile Include="Models\Team.cs" />
     <Compile Include="Queries\QueriesManager.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -58,14 +62,11 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Queries\David\GetAllCoaches.sql" />
-    <Content Include="Queries\David\GetTeamsForCoach.sql" />
-    <Content Include="Queries\David\PotentialsContactAndByGender.sql" />
-    <Content Include="Queries\David\SwimmersWithoutTraining.sql" />
+    <Content Include="Queries\GetAllCoaches.sql" />
+    <Content Include="Queries\GetTeamsForCoach.sql" />
+    <Content Include="Queries\PotentialsContactAndByGender.sql" />
+    <Content Include="Queries\SwimmersWithoutTraining.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Queries\Daniel\" />
-    <Folder Include="Queries\Shay\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
