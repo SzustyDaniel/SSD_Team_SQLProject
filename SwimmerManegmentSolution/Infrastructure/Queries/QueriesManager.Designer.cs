@@ -19,7 +19,7 @@ namespace Infrastructure.Queries {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class QueriesManager {
@@ -57,6 +57,83 @@ namespace Infrastructure.Queries {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Please review.
+        ///
+        ///SELECT CoachID, 
+        ///       CoachName, 
+        ///       C_Address AS [Address], 
+        ///       Achievement, 
+        ///       Salary, 
+        ///       StartDateOfWork, 
+        ///       TrainingDiploma
+        ///FROM tblCoach;.
+        /// </summary>
+        internal static string GetAllCoaches {
+            get {
+                return ResourceManager.GetString("GetAllCoaches", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Please review
+        ///
+        ///SELECT TeamID, 
+        ///       TeamName, 
+        ///       MinimumAge, 
+        ///       MaximumAge, 
+        ///       Competitive
+        ///FROM tblTeam
+        ///WHERE(Coach = @coachId);.
+        /// </summary>
+        internal static string GetTeamsForCoach {
+            get {
+                return ResourceManager.GetString("GetTeamsForCoach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Please review.
+        ///
+        ///SELECT s.SwimmerID, 
+        ///       MIN(s.FirstName) AS FirstName, 
+        ///       MIN(s.LastName) AS LastName, 
+        ///       MIN(DATEDIFF(YEAR, s.BirthDate, GETDATE())) AS Age, 
+        ///       COUNT(*) AS NumberOfTrainings
+        ///FROM tblPotentialSwimmer AS ps
+        ///     INNER JOIN tblSwimmer AS s ON ps.PotentialSwimmerID = s.SwimmerID
+        ///     INNER JOIN tblSwimmerTraining AS st ON ps.PotentialSwimmerID = st.SwimmerID
+        ///WHERE(ps.DateOfFirstContact &gt;= DATEADD(MONTH, @monthsToAdd, GETDATE()))
+        ///GROUP BY s.SwimmerID
+        ///UNION
+        ///SELEC [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string PotentialsContactAndByGender {
+            get {
+                return ResourceManager.GetString("PotentialsContactAndByGender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --Please review.
+        ///
+        ///SELECT rs.SwimmerID, 
+        ///       s.FirstName, 
+        ///       s.LastName, 
+        ///       s.Gender, 
+        ///       rs.Team, 
+        ///       rs.TutorID
+        ///FROM tblRegularSwimmer AS rs
+        ///     LEFT OUTER JOIN tblSwimmerTraining AS st ON rs.SwimmerID = st.SwimmerID
+        ///     INNER JOIN tblSwimmer AS s ON rs.SwimmerID = s.SwimmerID
+        ///WHERE(st.SwimmerID IS NULL);.
+        /// </summary>
+        internal static string SwimmersWithoutTraining {
+            get {
+                return ResourceManager.GetString("SwimmersWithoutTraining", resourceCulture);
             }
         }
     }
