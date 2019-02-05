@@ -8,36 +8,12 @@ namespace Infrastructure
 {
     public static class SqlHelper
     {
-        public static List<T> GetAllRowsFromDb<T>(string connectionString, string query, params SqlParameter[] parameters) where T : new()
-        {
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                List<T> list = new List<T>();
-                PropertyInfo[] publicProperties = typeof(T).GetProperties();
-                SqlCommand command = new SqlCommand(query, connection);
-
-                if (parameters != null && parameters.Length > 0)
-                    command.Parameters.AddRange(parameters);
-
-                SqlDataReader reader = command.ExecuteReader();
-                
-                while (reader.Read())
-                {
-                    T row = new T();
-                    foreach (PropertyInfo property in publicProperties)
-                    {
-                        object value = reader[property.Name];
-                        property.SetValue(row, value is DBNull ? null : value);
-                    }
-                    list.Add(row);
-                }
-                
-                return list;
-            }
-        }
-
+        
         public async static Task<List<T>> GetAllRowsFromDbAsync<T>(string connectionString, string query) where T : new()
+        {
+            return await GetAllRowsFromDbAsync<T>(connectionString, query, null);
+        }
+        public async static Task<List<T>> GetAllRowsFromDbAsync<T>(string connectionString, string query, params SqlParameter[] parameters) where T : new()
         {
             List<T> list = new List<T>();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -47,6 +23,11 @@ namespace Infrastructure
                 {
                     await connection.OpenAsync().ConfigureAwait(false);
                     SqlCommand command = new SqlCommand(query, connection);
+
+                    if (parameters != null && parameters.Length > 0)
+                    {
+                        command.Parameters.AddRange(parameters);
+                    }
                     reader = await command.ExecuteReaderAsync();
                 }
                 catch (Exception e)
@@ -79,6 +60,34 @@ namespace Infrastructure
         public static List<T> GetAllRowsFromDb<T>(string connectionString, string query) where T : new()
         {
             return GetAllRowsFromDb<T>(connectionString, query, null);
+        }
+        public static List<T> GetAllRowsFromDb<T>(string connectionString, string query, params SqlParameter[] parameters) where T : new()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                List<T> list = new List<T>();
+                PropertyInfo[] publicProperties = typeof(T).GetProperties();
+                SqlCommand command = new SqlCommand(query, connection);
+
+                if (parameters != null && parameters.Length > 0)
+                    command.Parameters.AddRange(parameters);
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    T row = new T();
+                    foreach (PropertyInfo property in publicProperties)
+                    {
+                        object value = reader[property.Name];
+                        property.SetValue(row, value is DBNull ? null : value);
+                    }
+                    list.Add(row);
+                }
+
+                return list;
+            }
         }
     }
 }
