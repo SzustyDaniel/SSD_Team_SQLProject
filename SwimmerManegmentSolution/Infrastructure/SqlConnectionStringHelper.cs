@@ -1,22 +1,20 @@
 ﻿using Infrastructure.Models;
 using Infrastructure.Queries;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure
 {
     public static class SqlConnectionStringHelper
     {
+        private const string ConnectionStringKey = "SingleConnection";
+
         /// <summary>
         /// TODO : Retrieves connection string named "SingleConnection" from App.config. 
         /// Fast solution for home work. Remove later when connection window will be present.
         /// </summary>
-        public static string ConnectionStringInAppConfig => ConfigurationManager.ConnectionStrings["SingleConnection"].ConnectionString;
+        public static string ConnectionStringInAppConfig => ConfigurationManager.ConnectionStrings[ConnectionStringKey].ConnectionString;
 
         public static string CurrentServerName => GetBuilderFromStoredConnectionString()?.DataSource;
 
@@ -32,9 +30,14 @@ namespace Infrastructure
             return SqlHelper.GetAllRowsFromDb<DbName>(connString, QueriesManager.GetUserDatabases);
         }
 
-        public static void SaveConnectionString(string serverName, string dbName)
+        public static void SaveConnectionString(string dataSource, string dbName)
         {
-            throw new NotImplementedException();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
+            {
+                DataSource = dataSource,
+                InitialCatalog = dbName
+            };
+            ConfigurationManager.ConnectionStrings[ConnectionStringKey].ConnectionString = builder.ConnectionString;
         }
 
         private static SqlConnectionStringBuilder GetBuilderFromStoredConnectionString()
