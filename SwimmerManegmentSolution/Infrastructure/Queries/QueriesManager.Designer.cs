@@ -61,8 +61,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
+        ///   Looks up a localized string similar to
         ///SELECT CoachID, 
         ///       CoachName, 
         ///       C_Address AS [Address], 
@@ -79,8 +78,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review
-        ///
+        ///   Looks up a localized string similar to
         ///SELECT TeamID, 
         ///       TeamName, 
         ///       MinimumAge, 
@@ -96,8 +94,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
+        ///   Looks up a localized string similar to
         ///SELECT s.SwimmerID, 
         ///       MIN(s.FirstName) AS FirstName, 
         ///       MIN(s.LastName) AS LastName, 
@@ -118,8 +115,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
+        ///   Looks up a localized string similar to
         ///SELECT rs.SwimmerID, 
         ///       s.FirstName, 
         ///       s.LastName, 

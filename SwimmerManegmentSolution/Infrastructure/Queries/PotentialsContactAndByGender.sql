@@ -1,6 +1,4 @@
-﻿--Please review.
-
-SELECT s.SwimmerID, 
+﻿SELECT s.SwimmerID, 
        MIN(s.FirstName) AS FirstName, 
        MIN(s.LastName) AS LastName, 
        MIN(DATEDIFF(YEAR, s.BirthDate, GETDATE())) AS Age, 
