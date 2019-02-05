@@ -20,16 +20,18 @@ namespace Infrastructure
                 PropertyInfo[] publicProperties = typeof(T).GetProperties();
                 SqlCommand command = new SqlCommand(query, connection);
                 SqlDataReader reader = command.ExecuteReader();
-                T row = new T();
+                
                 while (reader.Read())
                 {
+                    T row = new T();
                     foreach (PropertyInfo property in publicProperties)
                     {
                         object value = reader[property.Name];
                         property.SetValue(row, value is DBNull ? null : value);
                     }
+                    list.Add(row);
                 }
-                list.Add(row);
+                
                 return list;
             }
         }
