@@ -8,7 +8,6 @@ namespace Infrastructure
 {
     public static class SqlHelper
     {
-        
         public async static Task<List<T>> GetAllRowsFromDbAsync<T>(string connectionString, string query) where T : new()
         {
             return await GetAllRowsFromDbAsync<T>(connectionString, query, null);
