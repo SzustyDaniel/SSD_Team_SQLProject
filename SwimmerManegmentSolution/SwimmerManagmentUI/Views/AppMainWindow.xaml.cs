@@ -34,6 +34,7 @@ namespace SwimmerManagmentUI.Views
             this.DataContext = ViewModel;
         }
 
+        //Get all the coaches for the data gird
         private async void GetAllCoachesClick(object sender, RoutedEventArgs e)
         {
             List<Coach> result;
@@ -49,14 +50,53 @@ namespace SwimmerManagmentUI.Views
             }
         }
 
-        private void DgCoaches_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //Get all the teams that a selected coach has
+        private async void DgCoaches_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Coach coach = dgCoaches.SelectedItem as Coach;
             if (coach != null)
             {
-                SqlParameter parameter = new SqlParameter("coachId", coach.CoachID);
-                ViewModel.Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(ViewModel.ConnectionString, QueriesManager.GetTeamsForCoach, parameter));
-                dgTeams.ItemsSource = ViewModel.Teams;
+                try
+                {
+                    SqlParameter parameter = new SqlParameter("coachId", coach.CoachID);
+                    List<Team> teams = await SqlClientHelper.Get<Team>(parameter);
+                    ViewModel.Teams = new ObservableCollection<Team>(teams);
+                    dgTeams.ItemsSource = ViewModel.Teams;
+                }
+                catch
+                {
+                    MessageBox.Show("Error!!");
+                }
+            }
+        }
+
+        // Get all the Regular females and Potential from the last 6 months
+        private async void GetRPSwimmers_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<StupidClass> stupids = await SqlClientHelper.Get<StupidClass>(new SqlParameter("monthsToadd",-6),new SqlParameter("gender","female"));
+                ViewModel.SpecialSwimmers = new ObservableCollection<StupidClass>(stupids);
+                dgFemalePotential.ItemsSource = ViewModel.SpecialSwimmers;
+            }
+            catch
+            {
+                MessageBox.Show("Error!");
+            }
+        }
+
+        // Get all the Regulars that didn't had any training 
+        private async void GetLazyRegulars_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                List<RegularSwimmer> regulars = await SqlClientHelper.Get<RegularSwimmer>();
+                ViewModel.RegularSwimmers = new ObservableCollection<RegularSwimmer>(regulars);
+                dgLazyRegulars.ItemsSource = ViewModel.RegularSwimmers;
+            }
+            catch
+            {
+                MessageBox.Show("Error!");
             }
         }
 

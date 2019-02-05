@@ -13,9 +13,9 @@ namespace SwimmerManagmentUI.ViewModels
         private static readonly Dictionary<Type, string> typeToQuery = new Dictionary<Type, string>
         {
             {typeof(Coach),QueriesManager.GetAllCoaches},
-            {typeof(RegularSwimmer),QueriesManager.GetAllCoaches},
-            {typeof(StupidClass),QueriesManager.GetAllCoaches },
-            {typeof(Team),QueriesManager.GetAllCoaches }
+            {typeof(RegularSwimmer),QueriesManager.SwimmersWithoutTraining},
+            {typeof(StupidClass),QueriesManager.PotentialsContactAndByGender },
+            {typeof(Team),QueriesManager.GetTeamsForCoach }
         };
 
         public static async Task<List<T>> Get<T>(params SqlParameter[] parameters) where T : new()

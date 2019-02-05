@@ -7,14 +7,16 @@
         xmlns:v="clr-namespace:SwimmerManagmentUI.ViewModels"
         mc:Ignorable="d" x:Name="appWindow"
         Title="ISwim Main Window" Height="450" Width="800">
-    <Grid>
+    <Grid> <!-- Main grid -->
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
             <RowDefinition Height="0.75*"/>
         </Grid.RowDefinitions>
 
+        <!-- Window Header -->
         <TextBlock Text="ISwim Application" Grid.Row="0" Style="{DynamicResource HeaderStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
+        <!-- Tabs for Options -->
         <TabControl Grid.Row="1">
             <TabItem Header="View Coaches">
                 <Grid>
@@ -23,7 +25,7 @@
                         <RowDefinition Height="0.85*"/>
                     </Grid.RowDefinitions>
                     
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0"> <!--Buttons row-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.25*"/>
                             <ColumnDefinition Width="0.25*"/>
@@ -35,7 +37,7 @@
                         <TextBox Name="txbSearchCoach" Grid.Column="2" Margin="7,5"/>
                     </Grid>
 
-                    <Grid Grid.Row="1">
+                    <Grid Grid.Row="1"> <!-- DataGrid section for query-->
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="0.5*"/>
                             <ColumnDefinition Width="0.5*"/>
@@ -46,7 +48,50 @@
 
                     </Grid>
                 </Grid>
-            </TabItem>
+            </TabItem><!-- end of view coaches -->
+            
+            <TabItem Header="Potential and Female Swimmers">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid> <!--Button row-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Get Potential Swimmer from the last 6 months and Regular female swimmers" TextWrapping="Wrap" Margin="7,5"/>
+                        <Button x:Name="btnGetRPSwimmers" Content="Get Swimmers" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Click="GetRPSwimmers_Click"/>
+                    </Grid>
+
+                    <DataGrid Grid.Row="1" x:Name="dgFemalePotential"/>
+
+                </Grid>
+                
+            </TabItem><!-- End of Potential with female -->
+            
+            <TabItem Header="Regular Swimmers with no training">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.85*"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0"> <!--Button row-->
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Get regular swimmers that never had any training" TextWrapping="Wrap" Grid.Column="0"/>
+                        <Button x:Name="btnGetRegularLazy" Content="Get Swimmers" Style="{DynamicResource ButtonStyle}" Grid.Column="1" Click="GetLazyRegulars_Click"/>
+                    </Grid>
+
+                    <DataGrid Grid.Row="1" x:Name="dgLazyRegulars"/>
+
+                </Grid>
+            </TabItem><!--End of Lazy Regulars-->
         </TabControl>
     </Grid>
 </Window>

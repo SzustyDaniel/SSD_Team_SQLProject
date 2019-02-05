@@ -16,9 +16,7 @@ namespace SwimmerManagmentUI.ViewModels
     public class MainWindowViewModel: BaseViewModel
     {
         private readonly string connectionString;
-
-        private ListCollectionView collectionView;
-        public ListCollectionView CollectionView { get { return collectionView; } set {if(collectionView == value)return; collectionView = value; OnPropertyChanged(); } }
+        public string ConnectionString => connectionString;
 
         private ObservableCollection<Coach> _coaches;
         public ObservableCollection<Coach> Coaches { get { return _coaches; } set {if(_coaches == value)return; _coaches = value; OnPropertyChanged(); } }
@@ -30,10 +28,35 @@ namespace SwimmerManagmentUI.ViewModels
             {
                 if (_teams == value) return;
                 _teams = value;
-                OnPropertyChanged("Teams");
+                OnPropertyChanged();
             }
         }
 
+        private ObservableCollection<StupidClass> _specialSwimmers;
+        public ObservableCollection<StupidClass> SpecialSwimmers
+        {
+            get { return _specialSwimmers; }
+            set
+            {
+                if (_specialSwimmers == value) return;
+                _specialSwimmers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<RegularSwimmer> _regularSwimmers;
+        public ObservableCollection<RegularSwimmer> RegularSwimmers
+        {
+            get { return _regularSwimmers; }
+            set
+            {
+                if (_regularSwimmers == value) return;
+                _regularSwimmers = value;
+                OnPropertyChanged();
+            }
+        }
+
+        /*
         private RelayCommand<Coach> getTeamsCommand = null;
         public RelayCommand<Coach> GetTeamsCmd => getTeamsCommand ?? (getTeamsCommand = new RelayCommand<Coach>(GetTeamsCommand));
 
@@ -43,20 +66,18 @@ namespace SwimmerManagmentUI.ViewModels
             {
                 SqlParameter parameter = new SqlParameter("coachId", selected.CoachID);
                 Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(ConnectionString, QueriesManager.GetTeamsForCoach, parameter));
-                CollectionView = (ListCollectionView)CollectionViewSource.GetDefaultView(Teams);
             }
         }
 
         private RelayCommand getAllCoacheCommand = null;
         public RelayCommand GetAllCoachesCmd => getAllCoacheCommand ?? (getAllCoacheCommand = new RelayCommand(GetAllCoachesCommand));
 
-        public string ConnectionString => connectionString;
-
+        
         private void GetAllCoachesCommand()
         {
             Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(ConnectionString, QueriesManager.GetAllCoaches));
         }
-
+        */
 
         /// <summary>
         /// Base constructor for the view model
