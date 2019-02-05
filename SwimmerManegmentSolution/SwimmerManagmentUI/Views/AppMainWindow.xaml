@@ -38,13 +38,13 @@
                     </Grid>
 
                     <Grid Grid.Row="1"> <!-- DataGrid section for query-->
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="0.5*"/>
-                            <ColumnDefinition Width="0.5*"/>
-                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="0.5*"/>
+                        </Grid.RowDefinitions>
 
-                        <DataGrid x:Name="dgCoaches" Grid.Column="0" SelectionChanged="DgCoaches_SelectionChanged" />
-                        <DataGrid x:Name="dgTeams" Grid.Column="1" />
+                        <DataGrid x:Name="dgCoaches" Grid.Row="0" SelectionChanged="DgCoaches_SelectionChanged" IsReadOnly="True"/>
+                        <DataGrid x:Name="dgTeams" Grid.Row="1" IsReadOnly="True"/>
 
                     </Grid>
                 </Grid>
@@ -66,7 +66,7 @@
                         <Button x:Name="btnGetRPSwimmers" Content="Get Swimmers" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Click="GetRPSwimmers_Click"/>
                     </Grid>
 
-                    <DataGrid Grid.Row="1" x:Name="dgFemalePotential"/>
+                    <DataGrid Grid.Row="1" x:Name="dgFemalePotential" IsReadOnly="True"/>
 
                 </Grid>
                 
@@ -88,7 +88,7 @@
                         <Button x:Name="btnGetRegularLazy" Content="Get Swimmers" Style="{DynamicResource ButtonStyle}" Grid.Column="1" Click="GetLazyRegulars_Click"/>
                     </Grid>
 
-                    <DataGrid Grid.Row="1" x:Name="dgLazyRegulars"/>
+                    <DataGrid Grid.Row="1" x:Name="dgLazyRegulars" IsReadOnly="True"/>
 
                 </Grid>
             </TabItem><!--End of Lazy Regulars-->
