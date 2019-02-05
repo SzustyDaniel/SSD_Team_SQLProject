@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Coach.cs" />
+    <Compile Include="Models\DbName.cs" />
     <Compile Include="Models\RegularSwimmer.cs" />
     <Compile Include="Models\StupidClass.cs" />
     <Compile Include="Models\Team.cs" />
@@ -64,6 +65,7 @@
   <ItemGroup>
     <Content Include="Queries\GetAllCoaches.sql" />
     <Content Include="Queries\GetTeamsForCoach.sql" />
+    <Content Include="Queries\GetUserDatabases.sql" />
     <Content Include="Queries\PotentialsContactAndByGender.sql" />
     <Content Include="Queries\SwimmersWithoutTraining.sql" />
   </ItemGroup>

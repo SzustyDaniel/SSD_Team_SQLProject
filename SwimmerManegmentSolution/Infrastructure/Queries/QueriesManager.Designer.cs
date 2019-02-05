@@ -19,7 +19,7 @@ namespace Infrastructure.Queries {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class QueriesManager {
@@ -61,8 +61,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to
-        ///SELECT CoachID, 
+        ///   Looks up a localized string similar to SELECT CoachID, 
         ///       CoachName, 
         ///       C_Address AS [Address], 
         ///       Achievement, 
@@ -78,8 +77,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to
-        ///SELECT TeamID, 
+        ///   Looks up a localized string similar to SELECT TeamID, 
         ///       TeamName, 
         ///       MinimumAge, 
         ///       MaximumAge, 
@@ -94,8 +92,18 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to
-        ///SELECT s.SwimmerID, 
+        ///   Looks up a localized string similar to SELECT name
+        ///FROM master.sys.databases
+        ///WHERE database_id &gt; 4;.
+        /// </summary>
+        internal static string GetUserDatabases {
+            get {
+                return ResourceManager.GetString("GetUserDatabases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT s.SwimmerID, 
         ///       MIN(s.FirstName) AS FirstName, 
         ///       MIN(s.LastName) AS LastName, 
         ///       MIN(DATEDIFF(YEAR, s.BirthDate, GETDATE())) AS Age, 
@@ -106,7 +114,8 @@ namespace Infrastructure.Queries {
         ///WHERE(ps.DateOfFirstContact &gt;= DATEADD(MONTH, @monthsToAdd, GETDATE()))
         ///GROUP BY s.SwimmerID
         ///UNION
-        ///SELEC [rest of string was truncated]&quot;;.
+        ///SELECT s.SwimmerID, 
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string PotentialsContactAndByGender {
             get {
@@ -115,8 +124,7 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to
-        ///SELECT rs.SwimmerID, 
+        ///   Looks up a localized string similar to SELECT rs.SwimmerID, 
         ///       s.FirstName, 
         ///       s.LastName, 
         ///       s.Gender, 

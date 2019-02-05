@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Infrastructure.Models;
+using Infrastructure.Queries;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -20,9 +22,14 @@ namespace Infrastructure
 
         public static string CurrentDbName => GetBuilderFromStoredConnectionString()?.InitialCatalog;
 
-        public static List<string> AvailableDatabases(string serverName)
+        public static List<DbName> AvailableDatabases(string serverName)
         {
-            throw new NotImplementedException();
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
+            {
+                DataSource = serverName
+            };
+            string connString = builder.ConnectionString;
+            return SqlHelper.GetAllRowsFromDb<DbName>(connString, QueriesManager.GetUserDatabases);
         }
 
         public static void SaveConnectionString(string serverName, string dbName)
