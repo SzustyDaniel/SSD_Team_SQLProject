@@ -1,6 +1,4 @@
-﻿--Please review.
-
-SELECT CoachID, 
+﻿SELECT CoachID, 
        CoachName, 
        C_Address AS [Address], 
        Achievement, 

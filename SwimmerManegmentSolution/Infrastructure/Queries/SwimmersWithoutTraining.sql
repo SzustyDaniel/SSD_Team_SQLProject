@@ -1,6 +1,4 @@
-﻿--Please review.
-
-SELECT rs.SwimmerID, 
+﻿SELECT rs.SwimmerID, 
        s.FirstName, 
        s.LastName, 
        s.Gender, 

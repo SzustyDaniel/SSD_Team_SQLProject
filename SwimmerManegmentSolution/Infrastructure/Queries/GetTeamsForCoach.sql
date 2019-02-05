@@ -1,6 +1,4 @@
-﻿--Please review
-
-SELECT TeamID, 
+﻿SELECT TeamID, 
        TeamName, 
        MinimumAge, 
        MaximumAge, 
