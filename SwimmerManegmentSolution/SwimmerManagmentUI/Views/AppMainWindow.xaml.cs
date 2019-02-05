@@ -1,6 +1,7 @@
 ﻿using Infrastructure;
 using Infrastructure.Models;
 using SwimmerManagmentUI.Queries;
+using SwimmerManagmentUI.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -33,10 +34,19 @@ namespace SwimmerManagmentUI.Views
             this.DataContext = ViewModel;
         }
 
-        private void GetAllCoachesClick(object sender, RoutedEventArgs e)
+        private async void GetAllCoachesClick(object sender, RoutedEventArgs e)
         {
-            ViewModel.Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(ViewModel.ConnectionString, QueriesManager.GetAllCoaches));
-            dgCoaches.ItemsSource = ViewModel.Coaches;
+            List<Coach> result;
+            try
+            {
+                result = await SqlClientHelper.Get<Coach>();
+                ViewModel.Coaches = new ObservableCollection<Coach>(result);
+                dgCoaches.ItemsSource = ViewModel.Coaches;
+            }
+            catch
+            {
+                MessageBox.Show("Error!!");
+            }
         }
 
         private void DgCoaches_SelectionChanged(object sender, SelectionChangedEventArgs e)
