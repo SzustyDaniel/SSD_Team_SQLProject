@@ -22,11 +22,11 @@ namespace Infrastructure
 
         public static string CurrentDbName => GetBuilderFromStoredConnectionString()?.InitialCatalog;
 
-        public static List<DbName> AvailableDatabases(string serverName)
+        public static List<DbName> AvailableDatabases(string dataSource)
         {
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
             {
-                DataSource = serverName
+                DataSource = dataSource
             };
             string connString = builder.ConnectionString;
             return SqlHelper.GetAllRowsFromDb<DbName>(connString, QueriesManager.GetUserDatabases);
