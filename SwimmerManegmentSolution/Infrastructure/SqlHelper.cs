@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Reflection;
+using System.Threading.Tasks;
 
 namespace Infrastructure
 {
@@ -33,6 +34,45 @@ namespace Infrastructure
                 }
                 
                 return list;
+            }
+        }
+
+        public async static Task<List<T>> GetAllRowsFromDbAsync<T>(string connectionString, string query) where T : new()
+        {
+            List<T> list = new List<T>();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataReader reader;
+                try
+                {
+                    await connection.OpenAsync().ConfigureAwait(false);
+                    SqlCommand command = new SqlCommand(query, connection);
+                    reader = await command.ExecuteReaderAsync();
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Connection Error", e);
+                }
+
+                try
+                {
+                    PropertyInfo[] publicProperties = typeof(T).GetProperties();
+                    while (await reader.ReadAsync())
+                    {
+                        T row = new T();
+                        foreach (PropertyInfo property in publicProperties)
+                        {
+                            object value = reader[property.Name];
+                            property.SetValue(row, value is DBNull ? null : value);
+                        }
+                        list.Add(row);
+                    }
+                    return list;
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Reader Error", e);
+                }
             }
         }
 

@@ -47,27 +47,12 @@
     <Compile Include="Models\RegularSwimmer.cs" />
     <Compile Include="Models\StupidClass.cs" />
     <Compile Include="Models\Team.cs" />
-    <Compile Include="Queries\QueriesManager.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>QueriesManager.resx</DependentUpon>
-    </Compile>
     <Compile Include="SqlConnectionStringHelper.cs" />
     <Compile Include="SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Queries\QueriesManager.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>QueriesManager.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Queries\GetAllCoaches.sql" />
-    <Content Include="Queries\GetTeamsForCoach.sql" />
     <Content Include="Queries\GetUserDatabases.sql" />
-    <Content Include="Queries\PotentialsContactAndByGender.sql" />
-    <Content Include="Queries\SwimmersWithoutTraining.sql" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

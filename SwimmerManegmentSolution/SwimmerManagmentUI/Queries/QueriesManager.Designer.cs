@@ -19,24 +19,24 @@ namespace SwimmerManagmentUI.Queries {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class QueriesManager {
+    internal class QueriesManager {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public QueriesManager() {
+        internal QueriesManager() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SwimmerManagmentUI.Queries.QueriesManager", typeof(QueriesManager).Assembly);
@@ -51,7 +51,7 @@ namespace SwimmerManagmentUI.Queries {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -70,7 +70,7 @@ namespace SwimmerManagmentUI.Queries {
         ///       TrainingDiploma
         ///FROM tblCoach;.
         /// </summary>
-        public static string GetAllCoaches {
+        internal static string GetAllCoaches {
             get {
                 return ResourceManager.GetString("GetAllCoaches", resourceCulture);
             }
@@ -85,20 +85,9 @@ namespace SwimmerManagmentUI.Queries {
         ///FROM tblTeam
         ///WHERE(Coach = @coachId);.
         /// </summary>
-        public static string GetTeamsForCoach {
+        internal static string GetTeamsForCoach {
             get {
                 return ResourceManager.GetString("GetTeamsForCoach", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT name
-        ///FROM master.sys.databases
-        ///WHERE database_id &gt; 4;.
-        /// </summary>
-        internal static string GetUserDatabases {
-            get {
-                return ResourceManager.GetString("GetUserDatabases", resourceCulture);
             }
         }
         
@@ -117,7 +106,7 @@ namespace SwimmerManagmentUI.Queries {
         ///SELECT s.SwimmerID, 
         ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string PotentialsContactAndByGender {
+        internal static string PotentialsContactAndByGender {
             get {
                 return ResourceManager.GetString("PotentialsContactAndByGender", resourceCulture);
             }
@@ -135,7 +124,7 @@ namespace SwimmerManagmentUI.Queries {
         ///     INNER JOIN tblSwimmer AS s ON rs.SwimmerID = s.SwimmerID
         ///WHERE(st.SwimmerID IS NULL);.
         /// </summary>
-        public static string SwimmersWithoutTraining {
+        internal static string SwimmersWithoutTraining {
             get {
                 return ResourceManager.GetString("SwimmersWithoutTraining", resourceCulture);
             }

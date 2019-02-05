@@ -1,5 +1,4 @@
 ﻿using Infrastructure.Models;
-using Infrastructure.Queries;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -22,12 +21,13 @@ namespace Infrastructure
 
         public static List<DbName> AvailableDatabases(string dataSource)
         {
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
-            {
-                DataSource = dataSource
-            };
-            string connString = builder.ConnectionString;
-            return SqlHelper.GetAllRowsFromDb<DbName>(connString, QueriesManager.GetUserDatabases);
+            //SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder()
+            //{
+            //    DataSource = dataSource
+            //};
+            //string connString = builder.ConnectionString;
+            //return SqlHelper.GetAllRowsFromDb<DbName>(connString, QueriesManager.GetUserDatabases);
+            return null;
         }
 
         public static void SaveConnectionString(string dataSource, string dbName)
