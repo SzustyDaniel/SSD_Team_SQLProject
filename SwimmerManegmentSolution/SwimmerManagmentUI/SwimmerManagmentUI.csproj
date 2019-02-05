@@ -58,9 +58,14 @@
     <Compile Include="Commands\BaseCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\RelayCommandT.cs" />
-    <Compile Include="Models\Coach.cs" />
+    <Compile Include="Queries\QueriesManager.Designer.cs">
+      <DependentUpon>QueriesManager.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\SqlClientHelper.cs" />
     <Compile Include="Views\AppMainWindow.xaml.cs">
       <DependentUpon>AppMainWindow.xaml</DependentUpon>
     </Compile>
@@ -91,6 +96,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Queries\QueriesManager.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueriesManager.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -107,6 +116,12 @@
       <Project>{13747b4b-2ae9-4e8a-aebc-9dd76d0fa5bc}</Project>
       <Name>Infrastructure</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Queries\GetAllCoaches.sql" />
+    <Content Include="Queries\GetTeamsForCoach.sql" />
+    <Content Include="Queries\PotentialsContactAndByGender.sql" />
+    <Content Include="Queries\SwimmersWithoutTraining.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
