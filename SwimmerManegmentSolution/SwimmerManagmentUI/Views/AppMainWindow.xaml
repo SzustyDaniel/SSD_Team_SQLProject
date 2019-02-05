@@ -3,36 +3,50 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SwimmerManagmentUI.Views"
-        xmlns:viewModel="clr-namespace:SwimmerManagmentUI.ViewModels"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:v="clr-namespace:SwimmerManagmentUI.ViewModels"
         mc:Ignorable="d" x:Name="appWindow"
         Title="ISwim Main Window" Height="450" Width="800">
-    <Window.DataContext>
-        <viewModel:MainWindowViewModel/>
-    </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
-            <RowDefinition Height="0.35*"/>
-            <RowDefinition Height="0.40*"/>
+            <RowDefinition Height="0.75*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid ItemsSource="{Binding Coaches,Mode=TwoWay,NotifyOnSourceUpdated=True}" Grid.Row="1">
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction 
-                        Command="{Binding GetTeamsCmd}" 
-                        CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
-            <DataGrid.RowDetailsTemplate>
-                <DataTemplate>
-                    <DataGrid ItemsSource="{Binding Teams}"/>
-                </DataTemplate>
-            </DataGrid.RowDetailsTemplate>
-        </DataGrid>
+        <TextBlock Text="ISwim Application" Grid.Row="0" Style="{DynamicResource HeaderStyle}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
 
-        <Button Content="Get Coaches" Command="{Binding GetAllCoachesCmd}"/>
+        <TabControl Grid.Row="1">
+            <TabItem Header="View Coaches">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.15*"/>
+                        <RowDefinition Height="0.85*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition Width="0.25*"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Button Name="btnGetAllCoaches" Content="Get All Coaches" Grid.Column="0" Style="{DynamicResource ButtonStyle}" Click="GetAllCoachesClick"/>
+                        <Button Name="btnSearchCoach" Content="Search" Grid.Column="1" Style="{DynamicResource ButtonStyle}"/>
+                        <TextBox Name="txbSearchCoach" Grid.Column="2" Margin="7,5"/>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.5*"/>
+                            <ColumnDefinition Width="0.5*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <DataGrid x:Name="dgCoaches" Grid.Column="0" SelectionChanged="DgCoaches_SelectionChanged" />
+                        <DataGrid x:Name="dgTeams" Grid.Column="1" />
+
+                    </Grid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

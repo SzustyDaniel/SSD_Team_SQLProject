@@ -16,5 +16,11 @@ namespace SwimmerManagmentUI.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        protected virtual void OnPropertyChanged(PropertyChangedEventArgs args)
+        {
+            var handler = PropertyChanged;
+            handler?.Invoke(this, args);
+        }
     }
 }

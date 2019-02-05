@@ -16,6 +16,7 @@ namespace SwimmerManagmentUI.ViewModels
     public class MainWindowViewModel: BaseViewModel
     {
         private readonly string connectionString;
+
         private ListCollectionView collectionView;
         public ListCollectionView CollectionView { get { return collectionView; } set {if(collectionView == value)return; collectionView = value; OnPropertyChanged(); } }
 
@@ -41,7 +42,7 @@ namespace SwimmerManagmentUI.ViewModels
             if(selected != null)
             {
                 SqlParameter parameter = new SqlParameter("coachId", selected.CoachID);
-                Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(connectionString, QueriesManager.GetTeamsForCoach, parameter));
+                Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(ConnectionString, QueriesManager.GetTeamsForCoach, parameter));
                 CollectionView = (ListCollectionView)CollectionViewSource.GetDefaultView(Teams);
             }
         }
@@ -49,10 +50,11 @@ namespace SwimmerManagmentUI.ViewModels
         private RelayCommand getAllCoacheCommand = null;
         public RelayCommand GetAllCoachesCmd => getAllCoacheCommand ?? (getAllCoacheCommand = new RelayCommand(GetAllCoachesCommand));
 
+        public string ConnectionString => connectionString;
+
         private void GetAllCoachesCommand()
         {
-            Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(connectionString, QueriesManager.GetAllCoaches));
-            CollectionView = (ListCollectionView)CollectionViewSource.GetDefaultView(Coaches);
+            Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(ConnectionString, QueriesManager.GetAllCoaches));
         }
 
 
