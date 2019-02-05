@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace SwimmerManagmentUI.Commands
 {
-    class RelayCommand<T>: BaseCommand
+    public class RelayCommand<T>: BaseCommand
     {
         public override event EventHandler CanExecuteChanged
         {

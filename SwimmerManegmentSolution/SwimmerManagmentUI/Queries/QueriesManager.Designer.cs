@@ -19,24 +19,24 @@ namespace SwimmerManagmentUI.Queries {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class QueriesManager {
+    public class QueriesManager {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal QueriesManager() {
+        public QueriesManager() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SwimmerManagmentUI.Queries.QueriesManager", typeof(QueriesManager).Assembly);
@@ -51,7 +51,7 @@ namespace SwimmerManagmentUI.Queries {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,9 +61,7 @@ namespace SwimmerManagmentUI.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
-        ///SELECT CoachID, 
+        ///   Looks up a localized string similar to SELECT CoachID, 
         ///       CoachName, 
         ///       C_Address AS [Address], 
         ///       Achievement, 
@@ -72,16 +70,14 @@ namespace SwimmerManagmentUI.Queries {
         ///       TrainingDiploma
         ///FROM tblCoach;.
         /// </summary>
-        internal static string GetAllCoaches {
+        public static string GetAllCoaches {
             get {
                 return ResourceManager.GetString("GetAllCoaches", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review
-        ///
-        ///SELECT TeamID, 
+        ///   Looks up a localized string similar to SELECT TeamID, 
         ///       TeamName, 
         ///       MinimumAge, 
         ///       MaximumAge, 
@@ -89,16 +85,25 @@ namespace SwimmerManagmentUI.Queries {
         ///FROM tblTeam
         ///WHERE(Coach = @coachId);.
         /// </summary>
-        internal static string GetTeamsForCoach {
+        public static string GetTeamsForCoach {
             get {
                 return ResourceManager.GetString("GetTeamsForCoach", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
-        ///SELECT s.SwimmerID, 
+        ///   Looks up a localized string similar to SELECT name
+        ///FROM master.sys.databases
+        ///WHERE database_id &gt; 4;.
+        /// </summary>
+        internal static string GetUserDatabases {
+            get {
+                return ResourceManager.GetString("GetUserDatabases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT s.SwimmerID, 
         ///       MIN(s.FirstName) AS FirstName, 
         ///       MIN(s.LastName) AS LastName, 
         ///       MIN(DATEDIFF(YEAR, s.BirthDate, GETDATE())) AS Age, 
@@ -109,18 +114,17 @@ namespace SwimmerManagmentUI.Queries {
         ///WHERE(ps.DateOfFirstContact &gt;= DATEADD(MONTH, @monthsToAdd, GETDATE()))
         ///GROUP BY s.SwimmerID
         ///UNION
-        ///SELEC [rest of string was truncated]&quot;;.
+        ///SELECT s.SwimmerID, 
+        ///    [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string PotentialsContactAndByGender {
+        public static string PotentialsContactAndByGender {
             get {
                 return ResourceManager.GetString("PotentialsContactAndByGender", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to --Please review.
-        ///
-        ///SELECT rs.SwimmerID, 
+        ///   Looks up a localized string similar to SELECT rs.SwimmerID, 
         ///       s.FirstName, 
         ///       s.LastName, 
         ///       s.Gender, 
@@ -131,7 +135,7 @@ namespace SwimmerManagmentUI.Queries {
         ///     INNER JOIN tblSwimmer AS s ON rs.SwimmerID = s.SwimmerID
         ///WHERE(st.SwimmerID IS NULL);.
         /// </summary>
-        internal static string SwimmersWithoutTraining {
+        public static string SwimmersWithoutTraining {
             get {
                 return ResourceManager.GetString("SwimmersWithoutTraining", resourceCulture);
             }
