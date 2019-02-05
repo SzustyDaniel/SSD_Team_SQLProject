@@ -3,6 +3,7 @@ using Infrastructure.Models;
 using SwimmerManagmentUI.Queries;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Threading.Tasks;
 
 namespace SwimmerManagmentUI.ViewModels
@@ -17,6 +18,19 @@ namespace SwimmerManagmentUI.ViewModels
             {typeof(Team),QueriesManager.GetAllCoaches }
         };
 
+        public static async Task<List<T>> Get<T>(params SqlParameter[] parameters) where T : new()
+        {
+            if (typeToQuery.TryGetValue(typeof(T), out string query))
+            {
+                var connectionString = SqlConnectionStringHelper.ConnectionStringInAppConfig;
+                return await SqlHelper.GetAllRowsFromDbAsync<T>(connectionString, query, parameters).ConfigureAwait(false);
+            }
+            else
+            {
+                throw new KeyNotFoundException("Query not found");
+            }
+        }
+
         public static async Task<List<T>> Get<T>() where T : new()
         {
             if (typeToQuery.TryGetValue(typeof(T), out string query))
@@ -26,7 +40,7 @@ namespace SwimmerManagmentUI.ViewModels
             }
             else
             {
-                throw new Exception("Query not found");
+                throw new KeyNotFoundException("Query not found");
             }
         }
     }
