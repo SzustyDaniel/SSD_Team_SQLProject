@@ -9,6 +9,7 @@ using Infrastructure;
 using SwimmerManagmentUI.Commands;
 using System.Data.SqlClient;
 using SwimmerManagmentUI.Queries;
+using System.Windows.Data;
 
 namespace SwimmerManagmentUI.ViewModels
 {
