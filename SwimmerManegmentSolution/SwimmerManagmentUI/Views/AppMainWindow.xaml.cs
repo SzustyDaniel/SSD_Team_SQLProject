@@ -99,5 +99,16 @@ namespace SwimmerManagmentUI.Views
                 MessageBox.Show("Error!");
             }
         }
+
+        private void BtnSearchCoach_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(txbSearchCoach.Text, out int id) && dgCoaches.Items.Count > 0)
+            {
+                Coach item = dgCoaches.Items.OfType<Coach>().FirstOrDefault(c => c.CoachID == id);
+                if (item == null) return;
+                dgCoaches.ScrollIntoView(item);
+                dgCoaches.SelectedItem = item;
+            }
+        }
     }
 }

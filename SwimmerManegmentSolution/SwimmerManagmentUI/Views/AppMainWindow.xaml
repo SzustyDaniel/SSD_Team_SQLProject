@@ -33,7 +33,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Button Name="btnGetAllCoaches" Content="Get All Coaches" Grid.Column="0" Style="{DynamicResource ButtonStyle}" Click="GetAllCoachesClick"/>
-                        <Button Name="btnSearchCoach" Content="Search" Grid.Column="1" Style="{DynamicResource ButtonStyle}"/>
+                        <Button Name="btnSearchCoach" Content="Search" Grid.Column="1" Style="{DynamicResource ButtonStyle}" Click="BtnSearchCoach_Click"/>
                         <TextBox Name="txbSearchCoach" Grid.Column="2" Margin="7,5"/>
                     </Grid>
 
