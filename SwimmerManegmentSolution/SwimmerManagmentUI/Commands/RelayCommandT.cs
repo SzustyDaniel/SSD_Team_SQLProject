@@ -38,7 +38,8 @@ namespace SwimmerManagmentUI.Commands
 
         public override void Execute(object parameter)
         {
-            _execute((T)parameter);
+            if(parameter is T)
+                _execute((T)parameter);
         }
         #endregion
     }

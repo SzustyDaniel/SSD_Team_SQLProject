@@ -11,20 +11,6 @@
     <Window.DataContext>
         <viewModel:MainWindowViewModel/>
     </Window.DataContext>
-    <Window.Resources>
-        <!-- Data Template for selected Items -->
-        <DataTemplate x:Key="ItemSelectedTemplate">
-            <Grid>
-                <TextBlock Text="{Binding Text}">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="SelectionChanged">
-                        <i:InvokeCommandAction Command="{Binding GetTeamsCmd}" CommandParameter="{Binding }"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </TextBlock>
-        </Grid>
-        </DataTemplate>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.25*"/>
@@ -32,7 +18,7 @@
             <RowDefinition Height="0.40*"/>
         </Grid.RowDefinitions>
 
-        <DataGrid ItemsSource="{Binding Coaches}" Grid.Row="1">
+        <DataGrid ItemsSource="{Binding Coaches,Mode=TwoWay,NotifyOnSourceUpdated=True}" Grid.Row="1">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
                     <i:InvokeCommandAction 
@@ -40,7 +26,13 @@
                         CommandParameter="{Binding Path=SelectedItem,RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=DataGrid}}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <DataGrid ItemsSource="{Binding Teams}"/>
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
         </DataGrid>
-        <DataGrid ItemsSource="{Binding Teams}" Grid.Row="2" Style="{DynamicResource DataGridStyle}"/>
+
+        <Button Content="Get Coaches" Command="{Binding GetAllCoachesCmd}"/>
     </Grid>
 </Window>
