@@ -11,8 +11,8 @@ namespace Infrastructure.Models
         public int CoachID { get; set; }
         public string CoachName { get; set; }
         public string Address { get; set; }
-        public int Achievement { get; set; }
-        public int Salary { get; set; }
+        public decimal Achievement { get; set; }
+        public double Salary { get; set; }
         public DateTime StartDateOfWork { get; set; }
         public string TrainingDiploma { get; set; }
     }
