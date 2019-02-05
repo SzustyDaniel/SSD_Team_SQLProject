@@ -22,21 +22,21 @@ namespace Infrastructure.Queries {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class QueriesManager {
+    public class QueriesManager {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal QueriesManager() {
+        public QueriesManager() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Infrastructure.Queries.QueriesManager", typeof(QueriesManager).Assembly);
@@ -51,7 +51,7 @@ namespace Infrastructure.Queries {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -72,7 +72,7 @@ namespace Infrastructure.Queries {
         ///       TrainingDiploma
         ///FROM tblCoach;.
         /// </summary>
-        internal static string GetAllCoaches {
+        public static string GetAllCoaches {
             get {
                 return ResourceManager.GetString("GetAllCoaches", resourceCulture);
             }
@@ -89,7 +89,7 @@ namespace Infrastructure.Queries {
         ///FROM tblTeam
         ///WHERE(Coach = @coachId);.
         /// </summary>
-        internal static string GetTeamsForCoach {
+        public static string GetTeamsForCoach {
             get {
                 return ResourceManager.GetString("GetTeamsForCoach", resourceCulture);
             }
@@ -111,7 +111,7 @@ namespace Infrastructure.Queries {
         ///UNION
         ///SELEC [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string PotentialsContactAndByGender {
+        public static string PotentialsContactAndByGender {
             get {
                 return ResourceManager.GetString("PotentialsContactAndByGender", resourceCulture);
             }
@@ -131,7 +131,7 @@ namespace Infrastructure.Queries {
         ///     INNER JOIN tblSwimmer AS s ON rs.SwimmerID = s.SwimmerID
         ///WHERE(st.SwimmerID IS NULL);.
         /// </summary>
-        internal static string SwimmersWithoutTraining {
+        public static string SwimmersWithoutTraining {
             get {
                 return ResourceManager.GetString("SwimmersWithoutTraining", resourceCulture);
             }

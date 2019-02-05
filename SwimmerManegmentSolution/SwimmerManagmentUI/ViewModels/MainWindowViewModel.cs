@@ -7,13 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure;
 using SwimmerManagmentUI.Commands;
+using Infrastructure.Queries;
+using System.Data.SqlClient;
 
 namespace SwimmerManagmentUI.ViewModels
 {
     public class MainWindowViewModel: BaseViewModel
     {
-        private string constring = @"Data Source=DESKTOP-OJCM7B5\SQLEXPRESS;Initial Catalog = ISwim; Integrated Security = True";
-        private string query1 = @"SELECT CoachID,CoachName,C_Address AS [Address],Achievement,Salary,StartDateOfWork,TrainingDiploma FROM tblCoach;";
+        private readonly string connectionString;     
 
         private ObservableCollection<Coach> _coaches;
         public ObservableCollection<Coach> Coaches { get { return _coaches; } set {if(_coaches == value)return; _coaches = value; OnPropertyChanged(); } }
@@ -21,19 +22,22 @@ namespace SwimmerManagmentUI.ViewModels
         private ObservableCollection<Team> _teams;
         public ObservableCollection<Team> Teams { get { return _teams; } set { if (_teams == value) return; _teams = value; OnPropertyChanged(); } }
 
-        private RelayCommand<int> getTeamsCommand = null;
-        public RelayCommand<int> GetTeamsCmd => getTeamsCommand ?? (getTeamsCommand = new RelayCommand<int>(GetTeamsCommand));
+        private RelayCommand<Coach> getTeamsCommand = null;
+        public RelayCommand<Coach> GetTeamsCmd => getTeamsCommand ?? (getTeamsCommand = new RelayCommand<Coach>(GetTeamsCommand));
 
-        private void GetTeamsCommand(int id)
+        private void GetTeamsCommand(Coach selected)
         {
-            string teamq = $"SELECT TeamID,TeamName,MinimumAge,MaximumAge,Competitive FROM tblTeam WHERE(Coach ={id});";
-
-            Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(constring,teamq));
+            SqlParameter parameter = new SqlParameter("coachId", selected.CoachID);
+            Teams = new ObservableCollection<Team>(SqlHelper.GetAllRowsFromDb<Team>(connectionString, QueriesManager.GetTeamsForCoach,parameter));
         }
 
+        /// <summary>
+        /// Base constructor for the view model
+        /// </summary>
         public MainWindowViewModel()
         {
-            Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(constring, query1)); 
+            connectionString = SqlConnectionStringHelper.ConnectionStringInAppConfig;
+            Coaches = new ObservableCollection<Coach>(SqlHelper.GetAllRowsFromDb<Coach>(connectionString, QueriesManager.GetAllCoaches));
         }
 
 
