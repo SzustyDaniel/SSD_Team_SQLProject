@@ -47,6 +47,11 @@
     <Compile Include="Models\RegularSwimmer.cs" />
     <Compile Include="Models\StupidClass.cs" />
     <Compile Include="Models\Team.cs" />
+    <Compile Include="Queries\QueriesManager.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueriesManager.resx</DependentUpon>
+    </Compile>
     <Compile Include="SqlConnectionStringHelper.cs" />
     <Compile Include="SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -54,6 +59,11 @@
   <ItemGroup>
     <Content Include="Queries\GetUserDatabases.sql" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Queries\QueriesManager.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueriesManager.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
