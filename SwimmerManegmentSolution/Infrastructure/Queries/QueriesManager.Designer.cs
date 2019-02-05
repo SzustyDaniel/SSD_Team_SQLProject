@@ -22,21 +22,21 @@ namespace Infrastructure.Queries {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class QueriesManager {
+    internal class QueriesManager {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public QueriesManager() {
+        internal QueriesManager() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Resources.ResourceManager ResourceManager {
+        internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Infrastructure.Queries.QueriesManager", typeof(QueriesManager).Assembly);
@@ -51,7 +51,7 @@ namespace Infrastructure.Queries {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        public static global::System.Globalization.CultureInfo Culture {
+        internal static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,83 +61,13 @@ namespace Infrastructure.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT CoachID, 
-        ///       CoachName, 
-        ///       C_Address AS [Address], 
-        ///       Achievement, 
-        ///       Salary, 
-        ///       StartDateOfWork, 
-        ///       TrainingDiploma
-        ///FROM tblCoach;.
-        /// </summary>
-        public static string GetAllCoaches {
-            get {
-                return ResourceManager.GetString("GetAllCoaches", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT TeamID, 
-        ///       TeamName, 
-        ///       MinimumAge, 
-        ///       MaximumAge, 
-        ///       Competitive
-        ///FROM tblTeam
-        ///WHERE(Coach = @coachId);.
-        /// </summary>
-        public static string GetTeamsForCoach {
-            get {
-                return ResourceManager.GetString("GetTeamsForCoach", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT name
+        ///   Looks up a localized string similar to SELECT name AS Name
         ///FROM master.sys.databases
         ///WHERE database_id &gt; 4;.
         /// </summary>
         internal static string GetUserDatabases {
             get {
                 return ResourceManager.GetString("GetUserDatabases", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT s.SwimmerID, 
-        ///       MIN(s.FirstName) AS FirstName, 
-        ///       MIN(s.LastName) AS LastName, 
-        ///       MIN(DATEDIFF(YEAR, s.BirthDate, GETDATE())) AS Age, 
-        ///       COUNT(*) AS NumberOfTrainings
-        ///FROM tblPotentialSwimmer AS ps
-        ///     INNER JOIN tblSwimmer AS s ON ps.PotentialSwimmerID = s.SwimmerID
-        ///     INNER JOIN tblSwimmerTraining AS st ON ps.PotentialSwimmerID = st.SwimmerID
-        ///WHERE(ps.DateOfFirstContact &gt;= DATEADD(MONTH, @monthsToAdd, GETDATE()))
-        ///GROUP BY s.SwimmerID
-        ///UNION
-        ///SELECT s.SwimmerID, 
-        ///    [rest of string was truncated]&quot;;.
-        /// </summary>
-        public static string PotentialsContactAndByGender {
-            get {
-                return ResourceManager.GetString("PotentialsContactAndByGender", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to SELECT rs.SwimmerID, 
-        ///       s.FirstName, 
-        ///       s.LastName, 
-        ///       s.Gender, 
-        ///       rs.Team, 
-        ///       rs.TutorID
-        ///FROM tblRegularSwimmer AS rs
-        ///     LEFT OUTER JOIN tblSwimmerTraining AS st ON rs.SwimmerID = st.SwimmerID
-        ///     INNER JOIN tblSwimmer AS s ON rs.SwimmerID = s.SwimmerID
-        ///WHERE(st.SwimmerID IS NULL);.
-        /// </summary>
-        public static string SwimmersWithoutTraining {
-            get {
-                return ResourceManager.GetString("SwimmersWithoutTraining", resourceCulture);
             }
         }
     }

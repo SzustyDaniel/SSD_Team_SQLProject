@@ -7,9 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure;
 using SwimmerManagmentUI.Commands;
-using Infrastructure.Queries;
 using System.Data.SqlClient;
-using System.Windows.Data;
+using SwimmerManagmentUI.Queries;
 
 namespace SwimmerManagmentUI.ViewModels
 {
